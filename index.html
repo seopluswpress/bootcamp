@@ -738,31 +738,16 @@
     submitButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Submitting...';
     submitButton.disabled = true;
 
-    fetch(url, {
-        method: 'POST',
-        mode: 'no-cors',
-        body: formData
-    })
-    document.getElementById('successMessage').style.display = 'block';
-    document.getElementById('errorMessage').style.display = 'none';
-    this.reset();
+    fetch('https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec', {
+    method: 'POST',
+    mode: 'no-cors',
+    body: formData
+  });
 
-    then(response => {
-        if (response.ok) {
-            document.getElementById('successMessage').style.display = 'block';
-            document.getElementById('errorMessage').style.display = 'none';
-        } else {
-            throw new Error('Submission failed');
-        }
-    })
-    .catch(error => {
-        document.getElementById('errorMessage').style.display = 'block';
-        document.getElementById('errorText').textContent = error.message || 'Submission failed';
-    })
-    .finally(() => {
-        submitButton.innerHTML = originalText;
-        submitButton.disabled = false;
-    });
+  // Simulate success
+  document.getElementById('successMessage').style.display = 'block';
+  document.getElementById('errorMessage').style.display = 'none';
+  this.reset();
 });
 
     </script>
