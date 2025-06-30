@@ -561,7 +561,8 @@
           Registration submitted successfully! We'll contact you soon with further details.
         </div>
 
-        <form id="registrationForm" style="color: black;" action="https://script.google.com/macros/s/AKfycbwEaUdv8Knv6OPA4ojhmo-U2pepPaw7QdGPwhxJCKoIiVmJkxXD-UeOSXmUrOPNxBO11w/exec" method="POST">
+        <form id="registrationForm" method="POST" action="https://script.google.com/macros/s/AKfycbwEaUdv8Knv6OPA4ojhmo-U2pepPaw7QdGPwhxJCKoIiVmJkxXD-UeOSXmUrOPNxBO11w/exec" target="hidden_iframe" onsubmit="handleSuccessMessage()">
+
           <div class="form-row">
             <div class="form-group">
               <label for="firstName">First Name *</label>
@@ -689,10 +690,11 @@
     </footer>
 
     <script>
-        // Function to handle form submission
-        function submitForm() {
-            document.getElementById("registrationForm").submit();
-        }
+  function handleSuccessMessage() {
+    const successBox = document.getElementById("successMessage");
+    successBox.classList.add("show");
+    setTimeout(() => successBox.classList.remove("show"), 10000);
+  }
 </script>
 
     <iframe name="hidden_iframe" style="display:none;"></iframe>
