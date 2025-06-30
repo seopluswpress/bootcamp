@@ -561,7 +561,12 @@
           Registration submitted successfully! We'll contact you soon with further details.
         </div>
 
-        <form id="registrationForm" method="POST" action="https://script.google.com/macros/s/AKfycbwEaUdv8Knv6OPA4ojhmo-U2pepPaw7QdGPwhxJCKoIiVmJkxXD-UeOSXmUrOPNxBO11w/exec" target="hidden_iframe" onsubmit="handleSuccessMessage()">
+        <form id="registrationForm"
+      method="POST"
+      action="https://script.google.com/macros/s/AKfycbwEaUdv8Knv6OPA4ojhmo-U2pepPaw7QdGPwhxJCKoIiVmJkxXD-UeOSXmUrOPNxBO11w/exec"
+      target="hidden_iframe"
+      onsubmit="handleSuccessMessage()">
+>
 
           <div class="form-row">
             <div class="form-group">
@@ -673,6 +678,8 @@
             <i class="fas fa-paper-plane"></i> Submit Registration
           </button>
         </form>
+        <iframe name="hidden_iframe" style="display:none;"></iframe>
+
       </div>
     </div>
   </section>
@@ -691,13 +698,13 @@
 
     <script>
   function handleSuccessMessage() {
-    const successBox = document.getElementById("successMessage");
-    successBox.classList.add("show");
-    setTimeout(() => successBox.classList.remove("show"), 10000);
+    const msg = document.getElementById("successMessage");
+    msg.classList.add("show");
+    setTimeout(() => msg.classList.remove("show"), 10000);
   }
 </script>
 
-    <iframe name="hidden_iframe" style="display:none;"></iframe>
+
 </body>
 </html>
 
