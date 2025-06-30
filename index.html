@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="favicon" href="favicon.jpg">
     <style>
+        /* ... (Your existing CSS here) ... */
         * {
             margin: 0;
             padding: 0;
@@ -472,7 +473,6 @@
     </style>
 </head>
 <body>
-    <!-- Navigation -->
     <nav class="navbar">
         <div class="nav-container">
             <a href="#" class="logo">🚀 Corporate Readiness & Tech Guidance Bootcamp</a>
@@ -485,7 +485,6 @@
         </div>
     </nav>
 
-    <!-- Hero Section -->
     <section id="home" class="hero">
         <div class="hero-container">
             <div class="hero-rocket">🚀</div>
@@ -502,7 +501,6 @@
         </div>
     </section>
 
-    <!-- Features Section -->
     <section id="features" class="features">
         <div class="container">
             <h2 class="section-title">Why Join Our Bootcamp?</h2>
@@ -540,7 +538,6 @@
         </div>
     </section>
 
-    <!-- Info Section -->
     <section class="info-section">
         <div class="container">
             <h2 class="section-title">Bootcamp Details</h2>
@@ -569,7 +566,6 @@
         </div>
     </section>
 
-    <!-- Registration Section -->
     <section id="register" class="registration">
         <div class="registration-container">
             <h2 class="section-title" style="color: white;">Register for the Bootcamp</h2>
@@ -584,8 +580,7 @@
                     <span id="errorText">There was an error submitting the form. Please try again.</span>
                 </div>
 
-                <!-- Method 1: Traditional form submission (works with Google Apps Script) -->
-                <form action="https://script.google.com/macros/s/AKfycbwEaUdv8Knv6OPA4ojhmo-U2pepPaw7QdGPwhxJCKoIiVmJkxXD-UeOSXmUrOPNxBO11w/exec" method="POST" target="hidden_iframe" id="registrationForm" style="color: black;">
+                <form action="https://script.google.com/macros/s/AKfycbwEaUdv8Knv6OPA4ojhmo-U2pepPaw7QdGPwhxJCKoIiVmJkxXD-UeOSXmUrOPNxBO11w/exec" method="POST" target="_self" id="registrationForm" style="color: black;">
                     <div class="form-row">
                         <div class="form-group">
                             <label for="firstName">First Name *</label>
@@ -683,12 +678,12 @@
                     </div>
 
                     <div class="checkbox-group">
-                        <input type="checkbox" id="terms" name="terms" required>
+                        <input type="checkbox" id="terms" name="terms" value="Agreed" required>
                         <label for="terms">I agree to the terms and conditions and consent to be contacted regarding this bootcamp *</label>
                     </div>
 
                     <div class="checkbox-group">
-                        <input type="checkbox" id="updates" name="updates">
+                        <input type="checkbox" id="updates" name="updates" value="Yes">
                         <label for="updates">I would like to receive updates about future bootcamps and tech opportunities</label>
                     </div>
 
@@ -700,7 +695,6 @@
         </div>
     </section>
 
-    <!-- Footer -->
     <footer id="contact" class="footer">
         <div class="container">
             <p class="footer-quote">"Don't just survive—Thrive in the tech world."</p>
@@ -713,46 +707,71 @@
     </footer>
 
     <script>
-        document.getElementById('registrationForm').addEventListener('submit', function(event) {
-    event.preventDefault();
+        document.getElementById('registrationForm').addEventListener('submit', async function(event) {
+            event.preventDefault(); // Prevent default form submission
 
-    const formData = {
-        firstName: this.firstName.value,
-        lastName: this.lastName.value,
-        email: this.email.value,
-        phone: this.phone.value,
-        Address: this.Address.value,
-        college: this.college.value,
-        branch: this.branch.value,
-        year: this.year.value,
-        mode: this.mode.value,
-        gain: this.gain.value,
-        career: this.career.value,
-        about: this.about.value
-    };
+            const form = event.target;
+            const submitButton = form.querySelector('button[type="submit"]');
+            const successMessage = document.getElementById('successMessage');
+            const errorMessage = document.getElementById('errorMessage');
+            const errorText = document.getElementById('errorText');
 
-    const url = 'https://script.google.com/macros/s/AKfycbx9fwgyyl0a-gKYXAEY6mQJfE3IfU7M3VzlAORJbzF5zrxLif5oaOM78lCYBzSY1ZadmA/exec'; // replace with your own
+            // Hide previous messages
+            successMessage.classList.remove('show');
+            errorMessage.classList.remove('show');
 
-    const submitButton = this.querySelector('button[type="submit"]');
-    const originalText = submitButton.innerHTML;
-    submitButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Submitting...';
-    submitButton.disabled = true;
+            // Show loading state
+            const originalButtonText = submitButton.innerHTML;
+            submitButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Submitting...';
+            submitButton.disabled = true;
 
-    fetch(url, {
-    method: 'POST',
-    mode: 'no-cors',
-    body: formData
-  });
+            // Use FormData to correctly capture all form fields
+            const formData = new FormData(form);
 
-  // Simulate success
-  document.getElementById('successMessage').style.display = 'block';
-  document.getElementById('errorMessage').style.display = 'none';
-  this.reset();
-});
+            // You must use the correct deployed web app URL for the Google Apps Script
+            // The URL in your HTML form's action attribute is likely the correct one.
+            // Ensure this URL is the "execute as me" (your email) and "who has access: anyone" URL.
+            const url = form.action; 
 
+            try {
+                const response = await fetch(url, {
+                    method: 'POST',
+                    // No 'mode: "no-cors"' needed here if the Apps Script is deployed as a web app with 'anyone' access.
+                    // The browser will handle CORS if the server (Apps Script) allows it.
+                    // If you encounter CORS issues, double-check Apps Script deployment settings.
+                    body: formData // FormData object automatically sets Content-Type header
+                });
+
+                // Since Apps Script returns JSON, we should parse it.
+                // However, for web apps deployed with 'Execute as me' and 'Who has access: Anyone',
+                // the response often goes through a redirect or a simple success page.
+                // It's more reliable to check the form's target and how Apps Script responds.
+
+                // For a typical Google Apps Script web app submission:
+                // The script will likely return an HTML page or redirect.
+                // It's better to rely on the traditional iframe method if you want a direct response parsing,
+                // or ensure your Apps Script is returning a valid JSON string directly for fetch to parse.
+
+                // Given your current Apps Script returns JSON:
+                const result = await response.json(); 
+
+                if (result.status === 'success') {
+                    successMessage.classList.add('show');
+                    form.reset(); // Clear the form
+                } else {
+                    errorText.textContent = result.message || 'An unknown error occurred.';
+                    errorMessage.classList.add('show');
+                }
+            } catch (error) {
+                console.error('Submission error:', error);
+                errorText.textContent = 'Network error or server issue. Please try again later.';
+                errorMessage.classList.add('show');
+            } finally {
+                submitButton.innerHTML = originalButtonText;
+                submitButton.disabled = false;
+            }
+        });
     </script>
 
-    <!-- Hidden iframe for form submission -->
-    <iframe name="hidden_iframe" style="display:none;" onload="if(this.src && this.src.includes('google')) { document.getElementById('successMessage').style.display = 'block'; document.getElementById('errorMessage').style.display = 'none'; }"></iframe>
-</body>
+    </body>
 </html>
