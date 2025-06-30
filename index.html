@@ -429,9 +429,6 @@
                 color: #000;
             }
 
-    /* Optional: Make sure input and textarea text are also black */
-
-
             .registration-form {
                 padding: 2rem;
             }
@@ -450,6 +447,27 @@
 
         .success-message.show {
             display: block;
+            animation: slideDown 0.5s ease;
+        }
+
+        @keyframes slideDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .error-message {
+            display: none;
+            background: linear-gradient(135deg, #dc2626 0%, #ef4444 100%);
+            color: white;
+            padding: 1rem;
+            border-radius: 10px;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .error-message.show {
+            display: block;
+            animation: slideDown 0.5s ease;
         }
     </style>
 </head>
@@ -553,134 +571,134 @@
 
     <!-- Registration Section -->
     <section id="register" class="registration">
-    <div class="registration-container">
-      <h2 class="section-title" style="color: white;">Register for the Bootcamp</h2>
-      <div class="registration-form">
-        <div class="success-message" id="successMessage">
-          <i class="fas fa-check-circle"></i> 
-          Registration submitted successfully! We'll contact you soon with further details.
+        <div class="registration-container">
+            <h2 class="section-title" style="color: white;">Register for the Bootcamp</h2>
+            <div class="registration-form">
+                <div class="success-message" id="successMessage">
+                    <i class="fas fa-check-circle"></i> 
+                    Registration submitted successfully! We'll contact you soon with further details.
+                </div>
+
+                <div class="error-message" id="errorMessage">
+                    <i class="fas fa-exclamation-circle"></i> 
+                    <span id="errorText">There was an error submitting the form. Please try again.</span>
+                </div>
+
+                <!-- Method 1: Traditional form submission (works with Google Apps Script) -->
+                <form action="https://script.google.com/macros/s/AKfycbwEaUdv8Knv6OPA4ojhmo-U2pepPaw7QdGPwhxJCKoIiVmJkxXD-UeOSXmUrOPNxBO11w/exec" method="POST" target="hidden_iframe" id="registrationForm" style="color: black;">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="firstName">First Name *</label>
+                            <input type="text" id="firstName" name="firstName" required placeholder="Enter your first name">
+                        </div>
+                        <div class="form-group">
+                            <label for="lastName">Last Name *</label>
+                            <input type="text" id="lastName" name="lastName" required placeholder="Enter your last name">
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="email">Email Address *</label>
+                            <input type="email" id="email" name="email" required placeholder="your.email@example.com">
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone Number *</label>
+                            <input type="tel" id="phone" name="phone" required placeholder="+91 9876543210">
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="Address">Address *</label>
+                            <input type="text" id="Address" name="Address" required placeholder="Your address">
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="college">College/University *</label>
+                            <input type="text" id="college" name="college" required placeholder="Your college name">
+                        </div>
+                        <div class="form-group">
+                            <label for="branch">Branch/Stream *</label>
+                            <select id="branch" name="branch" required>
+                                <option value="">Select your branch</option>
+                                <option value="Computer Science">Computer Science</option>
+                                <option value="Information Technology">Information Technology</option>
+                                <option value="Electronics & Communication">Electronics & Communication</option>
+                                <option value="Electrical Engineering">Electrical Engineering</option>
+                                <option value="Mechanical Engineering">Mechanical Engineering</option>
+                                <option value="Civil Engineering">Civil Engineering</option>
+                                <option value="Other Engineering">Other Engineering</option>
+                                <option value="BCA">BCA</option>
+                                <option value="MCA">MCA</option>
+                                <option value="Other">Other</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="year">Current Year *</label>
+                            <select id="year" name="year" required>
+                                <option value="">Select year</option>
+                                <option value="Final Year">Final Year</option>
+                                <option value="Pre-Final Year">Pre-Final Year</option>
+                                <option value="Recent Graduate">Recent Graduate</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="mode">Preferred Mode *</label>
+                            <select id="mode" name="mode" required>
+                                <option value="">Select mode</option>
+                                <option value="Online">Online</option>
+                                <option value="Offline">Offline</option>
+                                <option value="Hybrid">Hybrid (Online + Offline)</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="career">What are your career aspirations?*</label>
+                        <textarea id="career" name="career" rows="4" placeholder="What are your career aspirations?" required></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="gain">What do you expect to gain from this bootcamp?*</label>
+                        <select id="gain" name="gain" required>
+                            <option value="">Select one</option>
+                            <option value="Resume Building">Resume Building</option>
+                            <option value="Interview Preparation">Interview Preparation</option>
+                            <option value="Soft Skills/Communication">Soft Skills/Communication</option>
+                            <option value="Technical Skills">Technical Skills</option>
+                            <option value="Corporate Etiquette">Corporate Etiquette</option>
+                            <option value="Career Roadmap Guidance">Career Roadmap Guidance</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="about">How did you hear about this bootcamp?</label>
+                        <textarea id="about" name="about" rows="4" placeholder="How did you hear about this bootcamp?"></textarea>
+                    </div>
+
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="terms" name="terms" required>
+                        <label for="terms">I agree to the terms and conditions and consent to be contacted regarding this bootcamp *</label>
+                    </div>
+
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="updates" name="updates">
+                        <label for="updates">I would like to receive updates about future bootcamps and tech opportunities</label>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 1rem;">
+                        <i class="fas fa-paper-plane"></i> Submit Registration
+                    </button>
+                </form>
+            </div>
         </div>
-
-        <form id="registrationForm"
-      method="POST"
-      action="https://script.google.com/macros/s/AKfycbwEaUdv8Knv6OPA4ojhmo-U2pepPaw7QdGPwhxJCKoIiVmJkxXD-UeOSXmUrOPNxBO11w/exec"
-      target="hidden_iframe">
-
-          <div class="form-row">
-            <div class="form-group">
-              <label for="firstName">First Name *</label>
-              <input type="text" id="firstName" name="firstName" required placeholder="Enter your first name">
-            </div>
-            <div class="form-group">
-              <label for="lastName">Last Name *</label>
-              <input type="text" id="lastName" name="lastName" required placeholder="Enter your last name">
-            </div>
-          </div>
-
-          <div class="form-row">
-            <div class="form-group">
-              <label for="email">Email Address *</label>
-              <input type="email" id="email" name="email" required placeholder="your.email@example.com">
-            </div>
-            <div class="form-group">
-              <label for="phone">Phone Number *</label>
-              <input type="tel" id="phone" name="phone" required placeholder="+91 9876543210">
-            </div>
-          </div>
-
-          <div class="form-row">
-            <div class="form-group">
-              <label for="Address">Address *</label>
-              <input type="text" id="Address" name="Address" required placeholder="Your address">
-            </div>
-          </div>
-
-          <div class="form-row">
-            <div class="form-group">
-              <label for="college">College/University *</label>
-              <input type="text" id="college" name="college" required placeholder="Your college name">
-            </div>
-            <div class="form-group">
-              <label for="branch">Branch/Stream *</label>
-              <select id="branch" name="branch" required>
-                <option value="">Select your branch</option>
-                <option value="Computer Science">Computer Science</option>
-                <option value="Information Technology">Information Technology</option>
-                <option value="Electronics & Communication">Electronics & Communication</option>
-                <option value="Electrical Engineering">Electrical Engineering</option>
-                <option value="Mechanical Engineering">Mechanical Engineering</option>
-                <option value="Civil Engineering">Civil Engineering</option>
-                <option value="Other Engineering">Other Engineering</option>
-                <option value="BCA">BCA</option>
-                <option value="MCA">MCA</option>
-                <option value="Other">Other</option>
-              </select>
-            </div>
-          </div>
-
-          <div class="form-row">
-            <div class="form-group">
-              <label for="year">Current Year *</label>
-              <select id="year" name="year" required>
-                <option value="">Select year</option>
-                <option value="Final Year">Final Year</option>
-                <option value="Pre-Final Year">Pre-Final Year</option>
-                <option value="Recent Graduate">Recent Graduate</option>
-              </select>
-            </div>
-            <div class="form-group">
-              <label for="preferredMode">Preferred Mode *</label>
-              <select id="mode" name="mode" required>
-                <option value="">Select mode</option>
-                <option value="Online">Online</option>
-                <option value="Offline">Offline</option>
-                <option value="Hybrid">Hybrid (Online + Offline)</option>
-              </select>
-            </div>
-          </div>
-
-          <div class="form-group">
-            <label for="career">What are your career aspirations?*</label>
-            <textarea id="career" name="career" rows="4" placeholder="What are your career aspirations?"></textarea>
-          </div>
-
-          <div class="form-group">
-            <label for="gain">What do you expect to gain from this bootcamp?*</label>
-            <select id="gain" name="gain" required>
-              <option value="">Select one</option>
-              <option value="Resume Building">Resume Building</option>
-              <option value="Interview Preparation">Interview Preparation</option>
-              <option value="Soft Skills/Communication">Soft Skills/Communication</option>
-              <option value="Technical Skills">Technical Skills</option>
-              <option value="Corporate Etiquette">Corporate Etiquette</option>
-              <option value="Career Roadmap Guidance">Career Roadmap Guidance</option>
-            </select>
-          </div>
-
-          <div class="form-group">
-            <label for="about">How you heard about this bootcamp?</label>
-            <textarea id="about" name="about" rows="4" placeholder="How did you hear about this bootcamp?"></textarea>
-          </div>
-
-          <div class="checkbox-group">
-            <input type="checkbox" id="terms" name="terms" required>
-            <label for="terms">I agree to the terms and conditions and consent to be contacted regarding this bootcamp *</label>
-          </div>
-
-          <div class="checkbox-group">
-            <input type="checkbox" id="updates" name="updates">
-            <label for="updates">I would like to receive updates about future bootcamps and tech opportunities</label>
-          </div>
-
-          <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 1rem;">
-            <i class="fas fa-paper-plane"></i> Submit Registration
-          </button>
-        </form>
-        <iframe name="hidden_iframe" style="display:none;"></iframe>
-
-      </div>
-    </div>
-  </section>
+    </section>
 
     <!-- Footer -->
     <footer id="contact" class="footer">
@@ -694,8 +712,62 @@
         </div>
     </footer>
 
+    <script>
+        document.getElementById('registrationForm').addEventListener('submit', function(event) {
+    event.preventDefault();
 
+    const formData = {
+        firstName: this.firstName.value,
+        lastName: this.lastName.value,
+        email: this.email.value,
+        phone: this.phone.value,
+        Address: this.Address.value,
+        college: this.college.value,
+        branch: this.branch.value,
+        year: this.year.value,
+        mode: this.mode.value,
+        gain: this.gain.value,
+        career: this.career.value,
+        about: this.about.value
+    };
+
+    const url = 'https://script.google.com/macros/s/AKfycbx9fwgyyl0a-gKYXAEY6mQJfE3IfU7M3VzlAORJbzF5zrxLif5oaOM78lCYBzSY1ZadmA/exec'; // replace with your own
+
+    const submitButton = this.querySelector('button[type="submit"]');
+    const originalText = submitButton.innerHTML;
+    submitButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Submitting...';
+    submitButton.disabled = true;
+
+    fetch(url, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(formData)
+    })
+    .then(response => response.json())
+    .then(result => {
+        if (result.status === 'success') {
+            document.getElementById('successMessage').style.display = 'block';
+            document.getElementById('errorMessage').style.display = 'none';
+            document.getElementById('registrationForm').reset();
+        } else {
+            throw new Error(result.message);
+        }
+    })
+    .catch(error => {
+        document.getElementById('errorMessage').style.display = 'block';
+        document.getElementById('errorText').textContent = error.message || 'Submission failed';
+    })
+    .finally(() => {
+        submitButton.innerHTML = originalText;
+        submitButton.disabled = false;
+    });
+});
+
+    </script>
+
+    <!-- Hidden iframe for form submission -->
+    <iframe name="hidden_iframe" style="display:none;" onload="if(this.src && this.src.includes('google')) { document.getElementById('successMessage').style.display = 'block'; document.getElementById('errorMessage').style.display = 'none'; }"></iframe>
 </body>
 </html>
-
-
