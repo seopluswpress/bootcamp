@@ -689,83 +689,8 @@
     </footer>
 
     <script>
-const GOOGLE_FORM_URL = 'https://script.google.com/macros/s/AKfycbwEaUdv8Knv6OPA4ojhmo-U2pepPaw7QdGPwhxJCKoIiVmJkxXD-UeOSXmUrOPNxBO11w/exec'; // Replace with your actual Web App URL
-
-document.getElementById('registrationForm').addEventListener('submit', function(e) {
-  e.preventDefault();
-  const form = this;
-  const submitBtn = form.querySelector('button[type="submit"]');
-  const originalText = submitBtn.innerHTML;
-  submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Submitting...';
-  submitBtn.disabled = true;
-
-  const formData = new FormData(form);
-  const data = Object.fromEntries(formData);
-
-  const requiredFields = ['firstName', 'lastName', 'email', 'phone', 'college', 'branch', 'year', 'mode'];
-  const missingFields = requiredFields.filter(field => !data[field]);
-
-  if (missingFields.length > 0) {
-    alert('Please fill in all required fields: ' + missingFields.join(', '));
-    submitBtn.innerHTML = originalText;
-    submitBtn.disabled = false;
-    return;
-  }
-
-  if (!data.terms) {
-    alert('Please accept the terms and conditions to proceed.');
-    submitBtn.innerHTML = originalText;
-    submitBtn.disabled = false;
-    return;
-  }
-
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  if (!emailRegex.test(data.email)) {
-    alert('Please enter a valid email address.');
-    submitBtn.innerHTML = originalText;
-    submitBtn.disabled = false;
-    return;
-  }
-
-  const phoneRegex = /^[\+]?[0-9\s\-\(\)]{10,}$/;
-  if (!phoneRegex.test(data.phone)) {
-    alert('Please enter a valid phone number.');
-    submitBtn.innerHTML = originalText;
-    submitBtn.disabled = false;
-    return;
-  }
-
-  const payload = new FormData();
-  payload.append('firstName', data.firstName);
-  payload.append('lastName', data.lastName);
-  payload.append('email', data.email);
-  payload.append('phone', data.phone);
-  payload.append('Address', data.Address);
-  payload.append('college', data.college);
-  payload.append('branch', data.branch);
-  payload.append('year', data.year);
-  payload.append('mode', data.mode);
-  payload.append('gain', data.gain);
-  payload.append('career', data.career);
-  payload.append('about', data.about);
-
-  fetch(GOOGLE_FORM_URL, {
-    method: 'POST',
-    body: payload
-  })
-    .then(response => {
-      document.getElementById('successMessage').classList.add('show');
-      form.reset();
-      submitBtn.innerHTML = originalText;
-      submitBtn.disabled = false;
-    })
-    .catch(error => {
-      alert('There was an error submitting the form. Try again.');
-      console.error('Form submission error:', error);
-      submitBtn.innerHTML = originalText;
-      submitBtn.disabled = false;
-    });
-});
+// JavaScript fetch() removed. Form will now submit via default POST behavior.
+// Make sure your <form> uses action="https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec" and method="POST"
 </script>
 
     <iframe name="hidden_iframe" style="display:none;"></iframe>
