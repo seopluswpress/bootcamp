@@ -731,18 +731,18 @@
         about: this.about.value
     };
 
-    const url = 'https://script.googleusercontent.com/macros/echo?user_content_key=AehSKLiU0tstGOE5ej75mEp_8IcnjZWwbLS2FM8OZ5m-QT1neUzUSKhkWkA9omRizq42yxwaQB4RorJV03YeMG21n-o8ThETHARip867buHbXKaxTI33iqN6TW3Mef1kTPweiLGXLpQUXjbPfLJl8GwtNi4dQo9dhX5dyz65ZWytkhFuKN__Ci8MIGVgztcqG4Aj0lAYBc5cVMzFA9whE5gt8RlZV1FN3hF-5YjZQnmPjo7tmbCycZPweS1X3Nzjr637D_jLFsk-JGCbnbjieTzlvXQsaMwPexLNogSfeEvf&lib=MhF6SSetgtdiJhnm26HsO85wa1z0BdxWX'; // replace with your own
+    
 
     const submitButton = this.querySelector('button[type="submit"]');
     const originalText = submitButton.innerHTML;
     submitButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Submitting...';
     submitButton.disabled = true;
 
-    fetch(url, {
-    method: 'POST',
-    mode: 'no-cors',
-    body: formData
-  });
+    fetch('https://script.google.com/macros/s/AKfycbx9fwgyyl0a-gKYXAEY6mQJfE3IfU7M3VzlAORJbzF5zrxLif5oaOM78lCYBzSY1ZadmA/exec', {
+  method: 'POST',
+  mode: 'no-cors',
+  body: formData
+});
 
   // Simulate success
   document.getElementById('successMessage').style.display = 'block';
