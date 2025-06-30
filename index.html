@@ -585,7 +585,7 @@
                 </div>
 
                 <!-- Method 1: Traditional form submission (works with Google Apps Script) -->
-                <form action="https://script.google.com/macros/s/AKfycbwEaUdv8Knv6OPA4ojhmo-U2pepPaw7QdGPwhxJCKoIiVmJkxXD-UeOSXmUrOPNxBO11w/exec" method="POST" target="hidden_iframe" id="registrationForm" style="color: black;">
+                <form action="https://script.google.com/macros/s/AKfycbx9fwgyyl0a-gKYXAEY6mQJfE3IfU7M3VzlAORJbzF5zrxLif5oaOM78lCYBzSY1ZadmA/exec" method="POST" target="hidden_iframe" id="registrationForm" style="color: black;">
                     <div class="form-row">
                         <div class="form-group">
                             <label for="firstName">First Name *</label>
@@ -738,7 +738,7 @@
     submitButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Submitting...';
     submitButton.disabled = true;
 
-    fetch('https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec', {
+    fetch(url, {
     method: 'POST',
     mode: 'no-cors',
     body: formData
