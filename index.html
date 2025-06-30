@@ -564,9 +564,7 @@
         <form id="registrationForm"
       method="POST"
       action="https://script.google.com/macros/s/AKfycbwEaUdv8Knv6OPA4ojhmo-U2pepPaw7QdGPwhxJCKoIiVmJkxXD-UeOSXmUrOPNxBO11w/exec"
-      target="hidden_iframe"
-      onsubmit="handleSuccessMessage()">
->
+      target="hidden_iframe">
 
           <div class="form-row">
             <div class="form-group">
@@ -695,14 +693,6 @@
             </p>
         </div>
     </footer>
-
-    <script>
-  function handleSuccessMessage() {
-    const msg = document.getElementById("successMessage");
-    msg.classList.add("show");
-    setTimeout(() => msg.classList.remove("show"), 10000);
-  }
-</script>
 
 
 </body>
