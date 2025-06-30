@@ -6,13 +6,469 @@
     <title>Corporate Readiness & Tech Guidance Bootcamp - Register Now</title>
     <meta name="description" content="Join our 7-day Corporate Readiness & Tech Guidance Bootcamp. From Campus to Corporate - Your Launchpad Begins Here!">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="favicon" href="favicon.jpg">
     <style>
-        /* Your complete CSS from the previous response */
-        /* ... (insert all the CSS from the previous response here) ... */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        /* Header & Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(30, 58, 138, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 0;
+            transition: all 0.3s ease;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: white;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #60a5fa;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 50%, #06b6d4 100%);
+            color: white;
+            padding: 120px 0 80px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><defs><radialGradient id="grad1" cx="50%" cy="50%" r="50%"><stop offset="0%" style="stop-color:white;stop-opacity:0.1" /><stop offset="100%" style="stop-color:white;stop-opacity:0" /></radialGradient></defs><circle cx="200" cy="300" r="150" fill="url(%23grad1)"/><circle cx="800" cy="200" r="100" fill="url(%23grad1)"/><circle cx="600" cy="700" r="120" fill="url(%23grad1)"/></svg>');
+            animation: float 20s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(2deg); }
+        }
+
+        .hero-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-rocket {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            animation: bounce 2s ease-in-out infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-20px); }
+            60% { transform: translateY(-10px); }
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero .tagline {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            font-style: italic;
+            opacity: 0.9;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #dc2626 0%, #ef4444 100%);
+            color: white;
+            box-shadow: 0 8px 25px rgba(220, 38, 38, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(220, 38, 38, 0.4);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(10px);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+        }
+
+        /* Features Section */
+        .features {
+            padding: 80px 0;
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #1e40af;
+            margin-bottom: 3rem;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            border-left: 5px solid #3b82f6;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(45deg, transparent, rgba(59, 130, 246, 0.05));
+            border-radius: 50%;
+            transform: translate(50%, -50%);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .feature-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #1e40af;
+            margin-bottom: 1rem;
+        }
+
+        .feature-desc {
+            color: #6b7280;
+            line-height: 1.6;
+        }
+
+        .feature-list {
+            list-style: none;
+            margin-top: 1rem;
+        }
+
+        .feature-list li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+            color: #374151;
+        }
+
+        .feature-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #10b981;
+            font-weight: bold;
+        }
+
+        /* Registration Section */
+        .registration {
+            padding: 80px 0;
+            background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
+            color: white;
+        }
+
+        .registration-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .registration-form {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 3rem;
+            border-radius: 25px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: black;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.1);
+            color: rgb(0, 0, 0);
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: rgb(0, 0, 0);
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: rgba(255, 255, 255, 0.5);
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin: 1rem 0;
+        }
+
+        .checkbox-group input[type="checkbox"] {
+            width: auto;
+        }
+
+        /* Info Cards */
+        .info-section {
+            padding: 80px 0;
+            background: white;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .info-card {
+            text-align: center;
+            padding: 2rem;
+            background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%);
+            border-radius: 20px;
+            border: 2px solid #e5e7eb;
+            transition: all 0.3s ease;
+        }
+
+        .info-card:hover {
+            transform: translateY(-5px);
+            border-color: #3b82f6;
+            box-shadow: 0 15px 30px rgba(59, 130, 246, 0.1);
+        }
+
+        .info-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .info-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #1e40af;
+            margin-bottom: 0.5rem;
+        }
+
+        .info-desc {
+            color: #6b7280;
+        }
+
+        /* Footer */
+        .footer {
+            background: #1f2937;
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+        }
+
+        .footer-quote {
+            font-size: 1.2rem;
+            font-style: italic;
+            margin-bottom: 1rem;
+            color: #60a5fa;
+        }
+
+        .footer-text {
+            opacity: 0.8;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero .tagline {
+                font-size: 1.2rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            select, select option {
+                color: #000;
+            }
+
+            .registration-form {
+                padding: 2rem;
+            }
+        }
+
+        /* Success Message */
+        .success-message {
+            display: none;
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            color: white;
+            padding: 1rem;
+            border-radius: 10px;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .success-message.show {
+            display: block;
+            animation: slideDown 0.5s ease;
+        }
+
+        @keyframes slideDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .error-message {
+            display: none;
+            background: linear-gradient(135deg, #dc2626 0%, #ef4444 100%);
+            color: white;
+            padding: 1rem;
+            border-radius: 10px;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .error-message.show {
+            display: block;
+            animation: slideDown 0.5s ease;
+        }
     </style>
 </head>
 <body>
@@ -84,10 +540,39 @@
         </div>
     </section>
 
+    <!-- Info Section -->
+    <section class="info-section">
+        <div class="container">
+            <h2 class="section-title">Bootcamp Details</h2>
+            <div class="info-grid">
+                <div class="info-card">
+                    <span class="info-icon">📅</span>
+                    <h3 class="info-title">Duration</h3>
+                    <p class="info-desc">7 Days Intensive Program</p>
+                </div>
+                <div class="info-card">
+                    <span class="info-icon">🏫</span>
+                    <h3 class="info-title">Mode</h3>
+                    <p class="info-desc">Online & Offline Options</p>
+                </div>
+                <div class="info-card">
+                    <span class="info-icon">🎓</span>
+                    <h3 class="info-title">Certificate</h3>
+                    <p class="info-desc">Industry Recognized Certificate</p>
+                </div>
+                <div class="info-card">
+                    <span class="info-icon">👥</span>
+                    <h3 class="info-title">Target</h3>
+                    <p class="info-desc">Final Year Students</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Registration Section -->
     <section id="register" class="registration">
         <div class="registration-container">
-            <h2 class="section-title">Register for the Bootcamp</h2>
+            <h2 class="section-title" style="color: white;">Register for the Bootcamp</h2>
             <div class="registration-form">
                 <div class="success-message" id="successMessage">
                     <i class="fas fa-check-circle"></i> 
@@ -99,46 +584,44 @@
                     <span id="errorText">There was an error submitting the form. Please try again.</span>
                 </div>
 
-                <form action="https://script.google.com/macros/s/AKfycbx9fwgyyl0a-gKYXAEY6mQJfE3IfU7M3VzlAORJbzF5zrxLif5oaOM78lCYBzSY1ZadmA/exec" method="POST" target="hidden_iframe" id="registrationForm">
-                    <!-- Hidden timestamp field -->
-                    <input type="hidden" name="timestamp" id="timestamp" value="">
-                    
+                <!-- Method 1: Traditional form submission (works with Google Apps Script) -->
+                <form action="https://script.google.com/macros/s/AKfycbwEaUdv8Knv6OPA4ojhmo-U2pepPaw7QdGPwhxJCKoIiVmJkxXD-UeOSXmUrOPNxBO11w/exec" method="POST" target="hidden_iframe" id="registrationForm" style="color: black;">
                     <div class="form-row">
                         <div class="form-group">
-                            <label for="firstName" class="required-field">First Name</label>
+                            <label for="firstName">First Name *</label>
                             <input type="text" id="firstName" name="firstName" required placeholder="Enter your first name">
                         </div>
                         <div class="form-group">
-                            <label for="lastName" class="required-field">Last Name</label>
+                            <label for="lastName">Last Name *</label>
                             <input type="text" id="lastName" name="lastName" required placeholder="Enter your last name">
                         </div>
                     </div>
 
                     <div class="form-row">
                         <div class="form-group">
-                            <label for="email" class="required-field">Email Address</label>
+                            <label for="email">Email Address *</label>
                             <input type="email" id="email" name="email" required placeholder="your.email@example.com">
                         </div>
                         <div class="form-group">
-                            <label for="phone" class="required-field">Phone Number</label>
+                            <label for="phone">Phone Number *</label>
                             <input type="tel" id="phone" name="phone" required placeholder="+91 9876543210">
                         </div>
                     </div>
 
                     <div class="form-row">
                         <div class="form-group">
-                            <label for="Address" class="required-field">Address</label>
+                            <label for="Address">Address *</label>
                             <input type="text" id="Address" name="Address" required placeholder="Your address">
                         </div>
                     </div>
 
                     <div class="form-row">
                         <div class="form-group">
-                            <label for="college" class="required-field">College/University</label>
+                            <label for="college">College/University *</label>
                             <input type="text" id="college" name="college" required placeholder="Your college name">
                         </div>
                         <div class="form-group">
-                            <label for="branch" class="required-field">Branch/Stream</label>
+                            <label for="branch">Branch/Stream *</label>
                             <select id="branch" name="branch" required>
                                 <option value="">Select your branch</option>
                                 <option value="Computer Science">Computer Science</option>
@@ -157,7 +640,7 @@
 
                     <div class="form-row">
                         <div class="form-group">
-                            <label for="year" class="required-field">Current Year</label>
+                            <label for="year">Current Year *</label>
                             <select id="year" name="year" required>
                                 <option value="">Select year</option>
                                 <option value="Final Year">Final Year</option>
@@ -166,7 +649,7 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <label for="mode" class="required-field">Preferred Mode</label>
+                            <label for="mode">Preferred Mode *</label>
                             <select id="mode" name="mode" required>
                                 <option value="">Select mode</option>
                                 <option value="Online">Online</option>
@@ -177,12 +660,12 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="career" class="required-field">What are your career aspirations?</label>
-                        <textarea id="career" name="career" rows="4" placeholder="Tell us about your career goals" required></textarea>
+                        <label for="career">What are your career aspirations?*</label>
+                        <textarea id="career" name="career" rows="4" placeholder="What are your career aspirations?" required></textarea>
                     </div>
 
                     <div class="form-group">
-                        <label for="gain" class="required-field">What do you expect to gain from this bootcamp?</label>
+                        <label for="gain">What do you expect to gain from this bootcamp?*</label>
                         <select id="gain" name="gain" required>
                             <option value="">Select one</option>
                             <option value="Resume Building">Resume Building</option>
@@ -196,12 +679,12 @@
 
                     <div class="form-group">
                         <label for="about">How did you hear about this bootcamp?</label>
-                        <textarea id="about" name="about" rows="4" placeholder="Tell us how you found out about the bootcamp"></textarea>
+                        <textarea id="about" name="about" rows="4" placeholder="How did you hear about this bootcamp?"></textarea>
                     </div>
 
                     <div class="checkbox-group">
                         <input type="checkbox" id="terms" name="terms" required>
-                        <label for="terms" class="required-field">I agree to the terms and conditions and consent to be contacted regarding this bootcamp</label>
+                        <label for="terms">I agree to the terms and conditions and consent to be contacted regarding this bootcamp *</label>
                     </div>
 
                     <div class="checkbox-group">
@@ -229,26 +712,47 @@
         </div>
     </footer>
 
-    <!-- Hidden iframe for form submission -->
-    <iframe name="hidden_iframe" style="display:none;" onload="if(this.src && this.src.includes('google')) { document.getElementById('successMessage').style.display = 'block'; document.getElementById('errorMessage').style.display = 'none'; document.getElementById('registrationForm').reset(); }"></iframe>
-
     <script>
-        // Set timestamp when form is submitted
-        document.getElementById('registrationForm').addEventListener('submit', function() {
-            const now = new Date();
-            const timestamp = now.toISOString();
-            document.getElementById('timestamp').value = timestamp;
-        });
+        document.getElementById('registrationForm').addEventListener('submit', function(event) {
+    event.preventDefault();
 
-        // Smooth scroll for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
-        });
+    const formData = {
+        firstName: this.firstName.value,
+        lastName: this.lastName.value,
+        email: this.email.value,
+        phone: this.phone.value,
+        Address: this.Address.value,
+        college: this.college.value,
+        branch: this.branch.value,
+        year: this.year.value,
+        mode: this.mode.value,
+        gain: this.gain.value,
+        career: this.career.value,
+        about: this.about.value
+    };
+
+    const url = 'https://script.google.com/macros/s/AKfycbx9fwgyyl0a-gKYXAEY6mQJfE3IfU7M3VzlAORJbzF5zrxLif5oaOM78lCYBzSY1ZadmA/exec'; // replace with your own
+
+    const submitButton = this.querySelector('button[type="submit"]');
+    const originalText = submitButton.innerHTML;
+    submitButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Submitting...';
+    submitButton.disabled = true;
+
+    fetch(url, {
+    method: 'POST',
+    mode: 'no-cors',
+    body: formData
+  });
+
+  // Simulate success
+  document.getElementById('successMessage').style.display = 'block';
+  document.getElementById('errorMessage').style.display = 'none';
+  this.reset();
+});
+
     </script>
+
+    <!-- Hidden iframe for form submission -->
+    <iframe name="hidden_iframe" style="display:none;" onload="if(this.src && this.src.includes('google')) { document.getElementById('successMessage').style.display = 'block'; document.getElementById('errorMessage').style.display = 'none'; }"></iframe>
 </body>
 </html>
