@@ -743,14 +743,16 @@
         mode: 'no-cors',
         body: formData
     })
-    .then(response => response.json())
-    .then(result => {
-        if (result.status === 'success') {
+    document.getElementById('successMessage').style.display = 'block';
+    document.getElementById('errorMessage').style.display = 'none';
+    this.reset();
+
+    then(response => {
+        if (response.ok) {
             document.getElementById('successMessage').style.display = 'block';
             document.getElementById('errorMessage').style.display = 'none';
-            document.getElementById('registrationForm').reset();
         } else {
-            throw new Error(result.message);
+            throw new Error('Submission failed');
         }
     })
     .catch(error => {
